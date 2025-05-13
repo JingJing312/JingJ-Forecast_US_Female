@@ -1,0 +1,53 @@
+---
+title: "MEM"
+author: "Jing Jing"
+date: "2025-05-8"
+output: html_document
+---
+
+```{r}
+devtools::install_github("mpascariu/MortalityForecast")
+```
+
+```{r}
+library(MortalityForecast)
+?model.MEM
+
+```
+
+```{r}
+# 1. Install & load required packages
+library(MortalityForecast)
+library(MortalityLaws)
+library(usethis)
+library(HMDHFDplus)
+
+# Your HMD login
+hmd_user <- "jingj4@miamioh.edu"
+hmd_pass <- "password"
+
+avail <- getHMDitemavail("USA")
+print(avail)
+
+
+usa_dx_female <- readHMDweb(
+  CNTRY    = "USA",
+  item     = "Deaths_1x1",
+  username = hmd_user,
+  password = hmd_pass,
+  fixup    = TRUE
+) 
+
+usa_ex_female <- readHMDweb(
+  CNTRY    = "USA",
+  item     = "Exposures_1x1",
+  username = hmd_user,
+  password = hmd_pass,
+  fixup    = TRUE
+)
+
+head(usa_dx_female)
+head(usa_ex_female)
+```
+
+
